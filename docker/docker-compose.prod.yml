@@ -8,8 +8,6 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ../:/var/www
       - ../logs/nginx:/var/log/nginx
-    networks:
-      - internal
   php_default:
     build:
       context: .
@@ -18,11 +16,6 @@ services:
     volumes:
       - ../:/var/www
       - ../logs/php:/var/log
-    networks:
-      - internal
     environment:
       APP_URL: ${APP_URL}
-networks:
-  internal:
-    driver: overlay
 
