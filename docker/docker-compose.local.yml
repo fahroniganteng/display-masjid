@@ -11,9 +11,7 @@ services:
     networks:
       - internal
   php_default:
-    build:
-      context: .
-      dockerfile: php/Dockerfile
+    image: ffilasta/bphn-mosque-screen:v1
     working_dir: /var/www
     volumes:
       - ../:/var/www
