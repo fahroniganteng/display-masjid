@@ -9,9 +9,7 @@ services:
       - ../:/var/www
       - ../logs/nginx:/var/log/nginx
   php_default:
-    build:
-      context: .
-      dockerfile: php/Dockerfile
+    image: ffilasta/bphn-mosque-screen
     working_dir: /var/www
     volumes:
       - ../:/var/www
