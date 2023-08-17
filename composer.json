@@ -1,0 +1,16 @@
+{
+  "name": "bphn/bphn-masjid-screen",
+  "version": "1.0",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Frans Filasta Pratama",
+      "email": "mail@fransfp.dev"
+    }
+  ],
+  "require": {
+    "vlucas/phpdotenv": "^5.5"
+  }
+}

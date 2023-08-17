@@ -1,4 +1,5 @@
 <?php
+include_once "Config.php";
 include_once "session.php";
 if(!isset($_SESSION["user_id"])){
 	header("Location: login.php");

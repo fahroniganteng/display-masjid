@@ -1,6 +1,6 @@
 <?php
-	// var_dump(PHP_OS);
-	// die;
+	include_once "../Config.php";
+
 	$file	= '../db/database.json';
 	if (!file_exists($file)){
 		echo "<h1>Jalankan admin terlebih dahulu</h1>";
@@ -28,7 +28,7 @@
 	$filesLogo	= array_values($filesLogo);//re index
 	$logo		= $filesLogo[0];
 
-    $host = "https://bphn-masjid-screen.test/display";
+    $host = Config::getAppUrl()."/display";
 	
 	$dir	= 'wallpaper/';
 	$files	= array_diff(scandir($dir),array('.','..','Thumbs.db'));
