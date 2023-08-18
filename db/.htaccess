@@ -1,5 +1,0 @@
-# proteksi database, bek gak iso diakses soko web
-<Files "database.json">
-    Order allow,deny
-    Deny from all
-</Files>

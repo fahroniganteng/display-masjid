@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'OpenSansCondLight';
+	src: url('OpenSansCondLight.eot');
+	src: local('OpenSansCondLight'), url('OpenSansCondLight.woff') format('woff'), url('OpenSansCondLight.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_6958">Text with this font applied</p> */
+.fontsforweb_fontid_6958 {
+	font-family: 'OpenSansCondLight' !important;
+}
+
+/* Font downloaded from FontsForWeb.com */
