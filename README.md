@@ -59,27 +59,6 @@ Aplikasi ini gratis dan open source dibawah lisensi **MIT**
 [![Instalasi](http://img.youtube.com/vi/HfmVgQ77y5w/0.jpg)](https://youtu.be/HfmVgQ77y5w)
 
 
-### Overview
-
-![Image Display 1](src/readme-image/img1.jpg)
-
-
-![Image Display 2](src/readme-image/img2.jpg)
-
-
-![Image Display 3](src/readme-image/img3.jpg)
-
-
-![Image Display 4](src/readme-image/img4.jpg)
-
-### Admin menu
-![Image Admin 1](src/readme-image/img5.JPG)
-![Image Admin 2](src/readme-image/img6.JPG)
-![Image Admin 3](src/readme-image/img7.JPG)
-![Image Admin 4](src/readme-image/img8.JPG)
-
-----
-
 ## MATERIAL DAN OS
 
 #### Material yang dibutuhkan:
@@ -183,6 +162,30 @@ Jalankan raspi, pasang keyboard dan mouse lakukan konfigurasi berikut :
 
 ## MANUAL INSTALASI
 
+### Docker Compose
+
+````yaml
+version: '3.9'
+services:
+	php:
+		image: ffilasta/bphn-masjid-screen:latest
+		environment:
+		  - APP_URL=http://localhost:8080
+		ports:
+			- "8080:8080"
+		volumes:
+			- "db:/app/db:rw"
+			- "wallpaper:/app/display/wallpaper:rw"
+volumes:
+	db:
+		external: false
+	wallpaper:
+		external: false
+````
+
+### Non Docker
+
+
 Untuk mempermudah, anda bisa melakukan instalasi melalui remote SSH dan VNC
 > Untuk windows bisa menggunakan aplikasi putty & WinSCP.
 - Jalankan putty
@@ -232,7 +235,7 @@ sudo apt-get upgrade
 	```
 	tambahkan baris berikut:
 	```
-	<Directory /var/www/html>
+	<Directory /var/www/html/app>
 		AllowOverride All
 	</Directory>
 	```
@@ -292,10 +295,6 @@ chromium-browser --check-for-update-interval=31536000 --incognito --kiosk http:/
 	```
 	sudo nano ~/.config/lxsession/LXDE-pi/autostart
 	```
-
-
-
-
 ----
 
 ### INSTALL RTC
