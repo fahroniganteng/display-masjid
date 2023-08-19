@@ -15,7 +15,7 @@ class Config
     }
 
     public static function getAppUrl(){
-        return $_ENV['APP_URL'] ?? 'http://localhost';
+        return $_ENV['APP_URL'] ?? '';
     }
 }
 
