@@ -23,7 +23,9 @@ COPY --chown=nobody --from=composer /app /var/www/html
 
 # Use envsubst to replace PORT in nginx.conf
 RUN envsubst '$PORT' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && \
-  rm /etc/nginx/nginx.conf.template
+  rm /etc/nginx/nginx.conf.template && \
+  chown nobody:nobody /etc/nginx/nginx.conf && \
+  chmod 644 /etc/nginx/nginx.conf
 
 # Expose the port
 EXPOSE ${PORT}
