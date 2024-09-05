@@ -17,13 +17,12 @@ FROM trafex/php-nginx
 ENV PORT=8080
 
 # Copy custom Nginx configuration template
-COPY nginx.conf.template /etc/nginx/nginx.conf.template
+COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY --chown=nobody --from=composer /app /var/www/html
 
-# Use envsubst to replace PORT in nginx.conf
-RUN sed -i "s/\$PORT/${PORT}/g" /etc/nginx/nginx.conf.template && \
-  mv /etc/nginx/nginx.conf.template /etc/nginx/nginx.conf && \
+# Replace $PORT with PORT env value in nginx.conf
+RUN sed -i "s/\$PORT/${PORT}/g" /etc/nginx/nginx.conf && \
   chown nobody:nobody /etc/nginx/nginx.conf && \
   chmod 644 /etc/nginx/nginx.conf
 
