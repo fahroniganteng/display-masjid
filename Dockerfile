@@ -13,10 +13,4 @@ RUN composer install \
 # dependencies downloaded by composer
 FROM trafex/php-nginx AS runner
 
-# Add environment variable for port
-ENV PORT=8080
-
 COPY --chown=nobody --from=composer /app /var/www/html
-
-# Expose the port
-EXPOSE ${PORT}
