@@ -16,15 +16,17 @@ FROM trafex/php-nginx
 # Add environment variable for port
 ENV PORT=8080
 
-# Copy custom Nginx configuration template and replace $PORT
-COPY nginx.conf /tmp/nginx.conf
-RUN sed -i "s/\$PORT/${PORT}/g" /tmp/nginx.conf && \
-  mv /tmp/nginx.conf /etc/nginx/nginx.conf
+RUN apk add --no-cache gettext
+
+# Copy custom Nginx configuration template
+COPY nginx.conf.template /etc/nginx/nginx.conf.template
 
 COPY --chown=nobody --from=composer /app /var/www/html
 
-# Set proper permissions for nginx.conf
-RUN chown nobody:nobody /etc/nginx/nginx.conf && \
+# Replace $PORT with PORT env value in nginx.conf
+RUN envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && \
+  rm /etc/nginx/nginx.conf.template && \
+  chown nobody:nobody /etc/nginx/nginx.conf && \
   chmod 644 /etc/nginx/nginx.conf
 
 # Expose the port
