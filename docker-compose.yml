@@ -1,13 +1,11 @@
 version: '3.9'
 services:
   php:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/fransfilastap/bphn-masjid-screen:latest
     environment:
-      - APP_URL=http://localhost:8080
+      - APP_URL=http://localhost:${PORT:-8080}
     ports:
-      - "8080:8080"
+      - "${PORT:-8080}:8080"
     volumes:
       - "db:/app/db:rw"
       - "wallpaper:/app/display/wallpaper:rw"
